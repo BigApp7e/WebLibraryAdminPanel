@@ -1,0 +1,110 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+.main-title {
+    margin-top: 50px;
+    padding: 0px;
+    width: 100%;
+    text-align: center;
+    color: #6daeFF;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.app-container {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+.add-form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.form-group {
+    flex-basis: calc(25% - 10px);
+    margin-bottom: 10px;
+}
+.vspacer {
+    display: block;
+    margin-bottom: 5px;
+    height:1em;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-group button {
+    margin: 0px auto;
+    width: 100%;
+    padding: 8px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-group button:hover {
+    background-color: #0056b3;
+}
+.delete-popup-container {
+    display: none;
+    width: 400px;
+    height: 260px;
+    border: 1px solid #6a6262;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+.vertical-flex-holder {
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+}

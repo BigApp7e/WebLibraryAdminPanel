@@ -1,0 +1,114 @@
+﻿@model WebLibrary.Models.IndexViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+    var url = Url.Action("ReceiveDataToDelete", "Home");
+}
+
+<h1 class="main-title">Library Admin Panel</h1>
+
+<!-- Modal -->
+<div class="modal fade" id="edithModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Edit</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" >
+                <div class="vertical-flex-holder">               
+                <label for="edit-аuthor">Author:</label>
+                    <input type="text" id="edit-аuthor" name="edit-аuthor">
+                <label for="edit-title">Title:</label>
+                    <input type="text" id="edit-title" name="edit-title">
+                <label for="edit-type">Type:</label>
+                    <select id="edit-type" name="edit-type">
+                        <option value="both">All type</option>
+                        <option value="book">Book</option>
+                        <option value="video">Video</option>
+                    </select>
+                    <input type="text" id="edit-id" name="edit-id" style="visibility:hidden">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btnSaveChanges">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure want to delete this item?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary ok dellOk">Yes</button>
+                <button type="button" class="btn btn-default no dellNo">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    <div class="app-container">
+        <div class="form-container">
+            <div class="form-group">
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author">
+            </div>
+            <div class="form-group">
+                <label for="name">Title:</label>
+                <input type="text" id="title" name="title">
+            </div>
+            <div class="form-group">
+                <label for="category">Type:</label>
+                <select id="type" name="type">
+                    <option value="both">All type</option>
+                    <option value="book">Book</option>
+                    <option value="video">Video</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <span class="vspacer"></span>
+                <button type="submit">Search</button>
+            </div>
+        </div>
+    </div>
+}
+
+@if (Model != null && Model.books != null && Model.books.Count > 0)
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th></th>
+                <th scope="col">Author</th>
+                <th scope="col">Title</th>
+                <th scope="col">Type</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Model.books)
+            {
+                <tr>
+                    <td style="visibility:hidden;">@book.Id</td>
+                    <td>@book.Author</td>
+                    <td>@book.Title</td>
+                    <td>@book.Type</td>
+                    <td><button type="submit" class="btn btn-primary-outline editBtn"><i class="bi bi-pen"></i></button></td>
+                    <td><button type="submit" class="btn btn-primary-outline delbtn"><i class="bi bi-trash"></i></button></td>
+                </tr>                
+            }
+        </tbody>
+    </table>
+}
